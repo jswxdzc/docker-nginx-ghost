@@ -18,8 +18,8 @@ RUN groupadd nobody && gpasswd -a nobody nobody
 
 # Populate basic Ghost environment
 WORKDIR /usr/src/ghost
-ENV GHOST_REL 0.7.5-master-20160203
-RUN  wget https://github.com/PeterCxy/Ghost/releases/download/${GHOST_REL}/release.zip && \
+ENV GHOST_REL 0.9.0
+RUN  wget https://github.com/TryGhost/Ghost/releases/download/${GHOST_REL}/Ghost-${GHOST_REL}.zip && \
   unzip release.zip && \
   npm install --production && \
   mv content content_default
