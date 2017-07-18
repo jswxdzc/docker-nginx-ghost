@@ -1,12 +1,13 @@
 FROM node:argon
-MAINTAINER Peter Cai <peter@typeblog.net>
+LABEL authors="peter@typeblog.net,jswxdzc@gmail.com"
+LABEL maintainer="jswxdzc@gmail.com"
 
 # Install unzip
 RUN apt-get update
 RUN apt-get -y install unzip
 
 # Install nginx
-ENV NGINX_VERSION 1.9.10-1~jessie
+ENV NGINX_VERSION 1.13.3~jessie
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
 	&& echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list \
 	&& apt-get update \
@@ -31,4 +32,5 @@ COPY run.sh /usr/src/ghost/
 RUN chmod +x run.sh
 
 EXPOSE 80
+EXPOSE 443
 CMD ["./run.sh"]
