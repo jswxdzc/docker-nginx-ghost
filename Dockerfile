@@ -22,7 +22,6 @@ WORKDIR /usr/src/ghost
 ENV GHOST_REL 1.0.0-rc.1
 RUN  wget https://github.com/TryGhost/Ghost/releases/download/${GHOST_REL}/Ghost-${GHOST_REL}.zip && \
   unzip Ghost-${GHOST_REL}.zip && \
-  rm .\package-lock.json && \
   npm install --production && \
   mv content content_default
 
