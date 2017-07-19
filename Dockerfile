@@ -22,7 +22,8 @@ WORKDIR /usr/src/ghost
 ENV GHOST_REL 1.0.0-rc.1
 RUN  wget https://github.com/TryGhost/Ghost/releases/download/${GHOST_REL}/Ghost-${GHOST_REL}.zip && \
   unzip Ghost-${GHOST_REL}.zip && \
-  npm cache clean install --production && \
+  npm run clean && \
+  npm install --production && \
   mv content content_default
 
 # Install the Configuration
@@ -32,5 +33,5 @@ COPY run.sh /usr/src/ghost/
 RUN chmod +x run.sh
 
 EXPOSE 80
-EXPOSE 443
+#EXPOSE 443
 CMD ["./run.sh"]
